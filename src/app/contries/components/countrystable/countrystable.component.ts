@@ -10,4 +10,5 @@ export class CountrystableComponent {
 @Input()
 public countries:Country[]=[]
 
+
 }

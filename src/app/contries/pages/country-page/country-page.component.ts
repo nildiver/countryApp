@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Coutryservice } from '../../services/coutry.service';
 
 @Component({
   selector: 'app-country-page',
@@ -8,11 +9,18 @@ import { ActivatedRoute } from '@angular/router';
   ]
 })
 export class CountryPageComponent implements OnInit {
-  constructor(private activatedRoute:ActivatedRoute){}
+  constructor(
+    private activatedRoute:ActivatedRoute,
+    private coutryesService:Coutryservice
+  ){}
 
   ngOnInit():void {
-    this.activatedRoute.params.subscribe(({id}) =>{
-      console.log({params: id})
+    this.activatedRoute.params
+    .subscribe(({id}) =>{
+      this.coutryesService.searchCountryByAlphaCode(id)
+      .subscribe(country=>{
+        console.log({country})
+      });
     });
 
   }

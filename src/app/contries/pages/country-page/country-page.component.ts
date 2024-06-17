@@ -11,8 +11,8 @@ export class CountryPageComponent implements OnInit {
   constructor(private activatedRoute:ActivatedRoute){}
 
   ngOnInit():void {
-    this.activatedRoute.params.subscribe((params) =>{
-      console.log({params: params['id']})
+    this.activatedRoute.params.subscribe(({id}) =>{
+      console.log({params: id})
     });
 
   }
